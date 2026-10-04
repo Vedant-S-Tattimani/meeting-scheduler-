@@ -1,95 +1,61 @@
-# HackHive Meeting Scheduler
+# ⚡ HackHive (Lumina) — Intelligent Meeting Scheduler
 
-A full-stack meeting scheduling platform built with React and Node.js. Book meetings, manage time slots, receive real-time notifications, and join video rooms — all in one place.
+<div align="center">
 
----
+> **The next-generation, conflict-free scheduling and collaboration platform. Featuring atomic booking integrity, smart slot recommendations, interactive 3D visual experiences, instant video rooms, and real-time state synchronization.**
 
-## 🚀 Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
+[![React 19](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-61dafb.svg)](https://react.dev/)
+[![Three.js](https://img.shields.io/badge/3D%20Graphics-Three.js%20%2F%20Fiber-black.svg)](https://threejs.org/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933.svg)](https://nodejs.org/)
+[![Socket.io](https://img.shields.io/badge/Realtime-Socket.io%20v4-010101.svg)](https://socket.io/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248.svg)](https://www.mongodb.com/)
 
-- **User Authentication** — Register, login, and JWT-based session management.
-- **Meeting Booking** — Browse available time slots and book meetings instantly.
-- **Admin Dashboard** — Manage users, meetings, and available time slots.
-- **User Dashboard** — View upcoming and past meetings at a glance.
-- **Real-Time Notifications** — Socket.io powered notification bell for instant updates.
-- **Video Room** — Join meetings via an integrated video conferencing room.
-- **Email Notifications** — Automated email confirmations and reminders via Nodemailer.
-
----
-
-## 🛠️ Tech Stack
-
-| Layer      | Technology                          |
-| ---------- | ----------------------------------- |
-| Frontend   | React 18, Vite, React Router v6    |
-| Backend    | Node.js, Express.js                |
-| Database   | MongoDB, Mongoose                  |
-| Auth       | JWT, bcryptjs                      |
-| Realtime   | Socket.io                          |
-| Email      | Nodemailer                         |
+</div>
 
 ---
 
-## 📦 Getting Started
+## 🌟 Quick Overview for Everyone
 
-### Prerequisites
+HackHive is an intelligent meeting scheduling platform designed to eliminate the back-and-forth of setting up meetings.
 
-- Node.js ≥ 18
-- MongoDB (local or Atlas)
+- **🛡️ 100% Conflict-Proof**: Guaranteed zero double bookings using atomic database locks.
+- **🌍 Auto-Timezone**: Seamlessly converts times across participants worldwide.
+- **📹 1-Click Video Calls**: Integrated in-app video conferencing powered by Jitsi Meet.
+- **🏢 Team & Organization Workspaces**: Department-level scheduling and directory hubs.
+- **🎨 3D Interactive UI**: Built with React 19, Three.js, React Three Fiber, and Framer Motion.
 
-### 1. Clone the repository
+---
 
-```bash
-git clone https://github.com/your-username/hackhive-meeting-scheduler.git
-cd hackhive-meeting-scheduler
-```
+## ⚙️ For Developers & Architects
 
-### 2. Backend Setup
+- **Atomic Locking**: MongoDB `findOneAndUpdate({ _id: slotId, isBooked: false })` prevents concurrent race conditions.
+- **AI Recommendation Engine**: Multi-signal scoring (0-100) factoring in proximity, host preferences, biological peak hours, and buffer times.
+- **Real-Time WebSockets**: Targeted Socket.io room broadcasts (`host_slots:<id>`, `user:<id>`, `meeting:<id>`).
+- **Enterprise Security**: Helmet, Express Rate Limiting, Mongo Sanitize, HPP, JWT validation.
 
+For the full architectural specification, see the root [`README.md`](../../README.md) and [`system_architecture.md`](../../system_architecture.md).
+
+---
+
+## 🚀 Quick Setup
+
+### 1. Backend
 ```bash
 cd backend
 npm install
-# Configure .env (see .env.example)
+cp .env.example .env
 npm run dev
 ```
 
-### 3. Frontend Setup
-
+### 2. Frontend
 ```bash
-cd frontend
+cd ../frontend/frontend/lumina-scheduler
 npm install
-# Configure .env (see .env.example)
 npm run dev
 ```
 
-The frontend runs on `http://localhost:5173` and the backend API on `http://localhost:5000`.
-
----
-
-## 📁 Project Structure
-
-```
-hackhive-meeting-scheduler/
-├── frontend/          # React + Vite client
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── hooks/
-│   │   ├── services/
-│   │   └── utils/
-│   └── ...
-├── backend/           # Express API server
-│   ├── config/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   └── utils/
-└── README.md
-```
-
----
-
-## 📄 License
-
-MIT © HackHive Team
+### 3. Demo Credentials (`npm run seed:demo`)
+- **Admin**: `admin@gmail.com` | `Password123`
+- **Host**: `host@hackhive.demo` | `Password123`
+- **Guest**: `guest@hackhive.demo` | `Password123`
